@@ -26,8 +26,15 @@ My pipeline consisted of 5 steps.
 
 In order to draw the the left and right lines
 * Separate lines detected into different groups:
-    * 1
-    * 2
+    * Assign the first detected line into a group
+    * For all subsequent lines, if the slope of that line is within 0.1 of the first line in a line group, assign that line into the group. Otherwise, add the line into a new line group
+    * Each line can only be in 1 line group
+* Sort the line groups from the group with the largest total line length to the group with the shortest total line length
+* Calculate the aggregated slope using linear regression (np.polyfit)
+* Start from the first element in the sorted group, choose 2 lines that fulfills the following criteria:
+    * The absolute value of slope is between 0.5 and 0.85
+    * The slopes of the two lines must be in different sign
+* Calculate the intercept of two selected lines. Draw them on the picture/video
 
 
 
