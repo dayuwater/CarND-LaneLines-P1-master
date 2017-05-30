@@ -40,14 +40,17 @@ In order to draw the the left and right lines
 
 ### 2. Identify potential shortcomings with your current pipeline
 
-
-One potential shortcoming would be what would happen when ... 
-
-Another shortcoming could be ...
+* When the lane color is not white, the lane segment detected is broken on a solid lane
+* When the first detected line segment is far from the camera, the line detection is a little off. (0:06 in solidWhite video)
+* Does not adapt the region of interest according to the picture. The left and right line detection will go wrong if the region of interest is much smaller because the road changes direction (see the output of the challenge video) 
+* When the background color of the road is close to white, the lane detection using this pipeline fails. (See 0:04 in the challenge video)
+* This could potentially fail if the car is in middle lanes where both left and right lines are not solid.
 
 
 ### 3. Suggest possible improvements to your pipeline
 
-A possible improvement would be to ...
+A possible improvement would be to sort the line group by the absolute value of aggregate slope (more slope = closer to center)
 
-Another potential improvement could be to ...
+Another potential improvement could be to determine the region of interest based on the curvature of the road
+
+This can also be improved by determine the threshold of Canny Edge Detection based on the background color of the road
