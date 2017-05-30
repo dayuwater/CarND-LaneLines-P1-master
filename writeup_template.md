@@ -24,6 +24,10 @@ My pipeline consisted of 5 steps.
 * Defined a region of interest using a trapezoid covers the bottom of the image/video
 * Hough Line detection with min line length of 8.
 
+In order to draw the the left and right lines
+* Separate lines detected into different groups:
+    * 1
+    * 2
 
 
 
